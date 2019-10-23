@@ -1,8 +1,5 @@
-console.time('START');
-
-for(let i = 0 ; i < 10000 ; ++i){
-    console.log('i');
-}
-
-
-console.timeEnd('START');
+const num1 = 100;
+const num2 = 50;
+let val;
+val = num1 * num2
+console.log(val); 
