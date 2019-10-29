@@ -1,51 +1,44 @@
-// document.getElementsByClassName
+// set local storage item
+// localStorage.setItem('name', 'John');
+// localStorage.setItem('age', '30');
 
-// const items = document.getElementsByClassName('collection-item');
-// console.log(items);
-// console.log(items[0]);
-// items[0].style.color = 'red';
-// items[3].textContent = 'Hello';
+// set session storage item
+// sessionStorage.setItem('name', 'Beth');
 
-// const listItems = document.querySelector('ul').getElementsByClassName('collection-item');
+// remove from storage
+// localStorage.removeItem('name');
 
-// console.log(listItems);
+// get from storage
+// const name = localStorage.getItem('name');
+// const age = localStorage.getItem('age');
 
-// document.getElementsByTagName
-// let lis = document.getElementsByTagName('li');
-// console.log(lis);
-// console.log(lis[0]);
-// lis[0].style.color = 'red';
-// lis[3].textContent = 'Hello';
+// // clear local storage
+// localStorage.clear();
 
-// // Conver HTML Collection into array
-// lis = Array.from(lis);
+// console.log(name, age);
 
-// lis.reverse();
+document.querySelector('form').addEventListener('submit', function(e){
+  const task = document.getElementById('task').value;
 
-// lis.forEach(function(li, index){
-//   console.log(li.className);
-//   li.textContent = `${index}: Hello`;
-// });
+  let tasks;
 
-// console.log(lis);
+  if(localStorage.getItem('tasks') === null) {
+    tasks = [];
+  } else {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+  }
 
-// document.querySelectorAll
-const items = document.querySelectorAll('ul.collection li.collection-item');
+  tasks.push(task);
 
-items.forEach(function(item, index){
-    item.textContent = `${index}: Hello`;
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+
+  alert('Task saved');
+
+  e.preventDefault();
 });
 
-const liOdd = document.querySelectorAll('li:nth-child(odd)');
-const liEven = document.querySelectorAll('li:nth-child(even)');
+const tasks = JSON.parse(localStorage.getItem('tasks'));
 
-liOdd.forEach(function(li, index){
-  li.style.background = '#ccc';
+tasks.forEach(function(task){
+  console.log(task);
 });
-
-for(let i = 0; i < liEven.length; i++){
-  liEven[i].style.background = '#f4f4f4';
-}
-
-
-console.log(items);
