@@ -1,51 +1,51 @@
-// REPLACE ELEMENT
+// document.getElementsByClassName
 
-// Create Element
-const newHeading = document.createElement('h2');
-// Add id
-newHeading.id = 'task-title';
-// New text node
-newHeading.appendChild(document.createTextNode('Task List'));
+// const items = document.getElementsByClassName('collection-item');
+// console.log(items);
+// console.log(items[0]);
+// items[0].style.color = 'red';
+// items[3].textContent = 'Hello';
 
-// Get the old heading
-const oldHeading = document.getElementById('task-title');
-//Parent
-const cardAction = document.querySelector('.card-action');
+// const listItems = document.querySelector('ul').getElementsByClassName('collection-item');
 
-// Replace
-cardAction.replaceChild(newHeading, oldHeading);
+// console.log(listItems);
 
-// REMOVE ELEMENT
-const lis = document.querySelectorAll('li');
-const list = document.querySelector('ul');
+// document.getElementsByTagName
+// let lis = document.getElementsByTagName('li');
+// console.log(lis);
+// console.log(lis[0]);
+// lis[0].style.color = 'red';
+// lis[3].textContent = 'Hello';
 
-// Remove list item
-lis[0].remove();
+// // Conver HTML Collection into array
+// lis = Array.from(lis);
 
-// Remove child element
-list.removeChild(lis[3]);
+// lis.reverse();
 
-// CLASSES & ATTR
-const firstLi = document.querySelector('li:first-child');
-const link = firstLi.children[0];
+// lis.forEach(function(li, index){
+//   console.log(li.className);
+//   li.textContent = `${index}: Hello`;
+// });
 
-let val;
+// console.log(lis);
 
-// Classes
-val = link.className;
-val = link.classList;
-val = link.classList[0];
-link.classList.add('test');
-link.classList.remove('test');
-val = link;
+// document.querySelectorAll
+const items = document.querySelectorAll('ul.collection li.collection-item');
 
-// Attributes
-val = link.getAttribute('href');
-val = link.setAttribute('href', 'http://google.com');
-link.setAttribute('title', 'Google');
-val = link.hasAttribute('title');
-link.removeAttribute('title');
-val = link;
+items.forEach(function(item, index){
+    item.textContent = `${index}: Hello`;
+});
 
-console.log(val);
+const liOdd = document.querySelectorAll('li:nth-child(odd)');
+const liEven = document.querySelectorAll('li:nth-child(even)');
 
+liOdd.forEach(function(li, index){
+  li.style.background = '#ccc';
+});
+
+for(let i = 0; i < liEven.length; i++){
+  liEven[i].style.background = '#f4f4f4';
+}
+
+
+console.log(items);
