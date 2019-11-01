@@ -1,0 +1,3 @@
+.collection .collection-item:nth-child(odd){
+  background:gray;
+}

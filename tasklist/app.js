@@ -62,7 +62,7 @@ function addTask(e) {
     const link = document.createElement('a');
     link.className = "delete-item secondary-content";
     // Add icon html
-    link.innerHTML = '<i class="fa fa-remove"></i>';
+    link.innerHTML = '<i class="fa fa-remove "></i>';
     // Append link to li
     li.append(link);
     //Append li to ul
@@ -87,7 +87,7 @@ function storeTaskInLocalStorage(task){
  localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-//Remove Task
+///Remove Task
 function removeTask(e) {
   if (e.target.parentElement.classList.contains('delete-item')) {
     console.log(e.target);
