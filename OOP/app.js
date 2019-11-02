@@ -133,27 +133,57 @@
 
 //ES6 CLASSES
 
-class Person{
-  constructor(firstName, lastName, dob){
+// class Person{
+//   constructor(firstName, lastName, dob){
+//     this.firstName = firstName;
+//     this.lastName = lastName;
+//     this.birthday = new Date(dob);
+//   }
+//   greeting(){
+//     return `Hello there ${this.firstName} ${this.lastName}`
+//   }
+//   calcAge(){
+//     const diff = Date.now() - this.birthday.getTime();
+//     const ageDate = new Date(diff);
+//     return Math.abs(ageDate.getUTCFullYear() - 1970);
+//   }
+//   getMarried(newLastName){
+//     this.lastName = newLastName;
+//   }
+// }
+// const mary = new Person("mary","cohen", '11-13-1980');
+// console.log(mary);
+// console.log(mary.greeting())
+// console.log(mary.calcAge())
+// mary.getMarried('ccloisng');
+// console.log(mary.greeting());
+
+
+//sub classes
+class Person {
+  constructor(firstName, lastName){
     this.firstName = firstName;
     this.lastName = lastName;
-    this.birthday = new Date(dob);
   }
+
   greeting(){
     return `Hello there ${this.firstName} ${this.lastName}`
   }
-  calcAge(){
-    const diff = Date.now() - this.birthday.getTime();
-    const ageDate = new Date(diff);
-    return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
+
+class Customer extends Person{
+  constructor(firstName, lastName, phone, memebership){
+    super(firstName, lastName);
+    this.phone = phone;
+    this.memebership = memebership;
   }
-  getMarried(newLastName){
-    this.lastName = newLastName;
+  static getMembershipCost(){
+    return 500;
   }
 }
-const mary = new Person("mary","cohen", '11-13-1980');
-console.log(mary);
-console.log(mary.greeting())
-console.log(mary.calcAge())
-mary.getMarried('ccloisng');
-console.log(mary.greeting());
+
+const john = new Customer('Jhon', 'cohen', '2323232', 'standart');
+
+console.log(john);
+console.log(john.greeting());
+console.log(Customer.getMembershipCost());
