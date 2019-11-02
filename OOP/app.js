@@ -67,39 +67,65 @@
 
 //Person contrsuctor
 
-function Person(firstName, LastName) {
-  this.firstName = firstName;
-  this.LastName = LastName;
+// function Person(firstName, LastName) {
+//   this.firstName = firstName;
+//   this.LastName = LastName;
+// }
+
+// //Greeting
+// Person.prototype.greeting = function () {
+//   return `Hello there ${this.firstName} ${this.LastName}`;
+// }
+
+// const person1 = new Person('John', 'Doe');
+// // console.log(person1.greeting());
+
+// function Customer(firstName, lastName, phone, membership){
+//   Person.call(this, firstName, lastName);
+
+//   this.phone = phone;
+//   this.membership = membership;
+// }
+// // inherit the Person prototype methods
+// Customer.prototype = Object.create(Person.prototype);
+// //make customer.prototype return customer
+// Customer.prototype.cunstructor = Customer;
+// //Create customer
+//  const customer1 = new Customer('Tom', 'Smite', '5555-555-55', 'vip');
+
+//  console.log(customer1);
+
+//  // Override greeting
+//  Customer.prototype.greeting = function() {
+//   return `Hello there the  ${this.firstName} ${this.LastName} welcome to our company
+//   `;
+//  }
+
+//  console.log(customer1.greeting())
+//  console.log(person1.greeting());
+
+
+const personPrototypes = {
+  greeting: function(){
+    return `hello there ${this.firstName} ${this.lastName}`;
+  },
+  getsMarried: function(newLastName) {
+    this.lastName = newLastName;
+  }
 }
+const mary = Object.create(personPrototypes);
+mary.firstName = "mary";
+mary.lastName = "Bonit";
 
-//Greeting
-Person.prototype.greeting = function () {
-  return `Hello there ${this.firstName} ${this.LastName}`;
-}
+console.log(mary);
+mary.getsMarried("cohen")
+console.log(mary.greeting());
 
-const person1 = new Person('John', 'Doe');
-// console.log(person1.greeting());
+const brad = Object.create(personPrototypes, {
+    firstName: {value: 'Brad'},
+    lastName: {value: 'travers'},
+    age: {value: 36}
+});
 
-function Customer(firstName, lastName, phone, membership){
-  Person.call(this, firstName, lastName);
-
-  this.phone = phone;
-  this.membership = membership;
-}
-// inherit the Person prototype methods
-Customer.prototype = Object.create(Person.prototype);
-//make customer.prototype return customer
-Customer.prototype.cunstructor = Customer;
-//Create customer
- const customer1 = new Customer('Tom', 'Smite', '5555-555-55', 'vip');
-
- console.log(customer1);
-
- // Override greeting
- Customer.prototype.greeting = function() {
-  return `Hello there the  ${this.firstName} ${this.LastName} welcome to our company
-  `;
- }
-
- console.log(customer1.greeting())
- console.log(person1.greeting());
+console.log(brad);
+console.log(brad.greeting());
